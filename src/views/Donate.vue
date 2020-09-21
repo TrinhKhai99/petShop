@@ -173,7 +173,7 @@
             </div>
         </div>
         <FooterHome/>
-        <Ontop/>
+
   </div>
 </template>
 
@@ -181,7 +181,6 @@
 import VueSlickCarousel from "vue-slick-carousel";
 import FooterHome from '../components/FooterHome.vue'
 import Donors from '../components/Donors.vue'
-import Ontop from '../components/Ontop.vue'
 export default {
   data() {
     return {
@@ -256,7 +255,6 @@ export default {
     VueSlickCarousel,
     FooterHome,
     Donors,
-    Ontop
   }
 }
 </script>

@@ -105,7 +105,7 @@
     </div>
     <ReadyHelp/>
     <FooterHome />
-    <Ontop/>
+
   </div>
 </template>
 
@@ -113,7 +113,7 @@
 import ReadyHelp from '../components/ReadyHelp.vue'
 import FooterHome from '../components/FooterHome.vue'
 import VueSlickCarousel from "vue-slick-carousel";
-import Ontop from '../components/Ontop.vue'
+
 import Paginate from "./Paginate";
 export default {
     data() {
@@ -163,7 +163,7 @@ export default {
     FooterHome,
     VueSlickCarousel,
     ReadyHelp,
-    Ontop,
+   
     Paginate
   },
   computed: {

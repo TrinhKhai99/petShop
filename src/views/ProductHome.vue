@@ -47,14 +47,14 @@
       </div>
     </div>
     <FooterHome/>
-    <Ontop/>
+    
   </div>
 </template>
 
 <script>
 import FooterHome from '../components/FooterHome.vue'
 import Paginate from "./Paginate";
-import Ontop from '../components/Ontop.vue'
+
 export default {
   data() {
     return {
@@ -64,7 +64,6 @@ export default {
   },
     components: {
         FooterHome,
-        Ontop,
         Paginate
     },
     computed: {

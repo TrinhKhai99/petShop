@@ -100,19 +100,18 @@
         </div>
         <Donors/>
         <Footer/>
-        <Ontop/>
+        
   </div>
 </template>
 
 <script>
 import Donors from '../components/Donors.vue'
 import Footer from '../components/FooterHome.vue'
-import Ontop from '../components/Ontop.vue'
 export default {
     components: {
         Donors,
         Footer,
-        Ontop
+        
     }
 };
 </script>

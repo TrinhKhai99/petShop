@@ -121,7 +121,6 @@
     </div>
     <FakeAdopt/>
     <FooterHome/>
-    <Ontop/>
   </div>
 </template>
 
@@ -129,7 +128,6 @@
 import FakeAdopt from '../components/FakeAdopt.vue'
 import ProcessAdopt from '../components/ProcessAdopt.vue'
 import FooterHome from '../components/FooterHome.vue'
-import Ontop from '../components/Ontop.vue'
 export default {
   data() {
     return {
@@ -185,7 +183,7 @@ export default {
         ProcessAdopt,
         FakeAdopt,
         FooterHome,
-        Ontop
+  
     }
 };
 </script>

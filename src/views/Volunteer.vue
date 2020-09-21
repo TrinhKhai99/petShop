@@ -184,7 +184,7 @@
     </div>
     <ReadyHelp/>
     <Footer/>
-    <Ontop/>
+   
   </div>
 </template>
 
@@ -193,7 +193,7 @@ import VueSlickCarousel from "vue-slick-carousel";
 import ReadyHelp from '../components/ReadyHelp.vue';
 import Donors from "../components/Donors.vue";
 import Footer from "../components/FooterHome.vue";
-import Ontop from '../components/Ontop.vue'
+
 export default {
   data() {
     return {
@@ -266,7 +266,7 @@ export default {
     VueSlickCarousel,
     ReadyHelp,
     Footer,
-    Ontop
+   
   }
 };
 </script>

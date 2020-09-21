@@ -326,7 +326,6 @@
 </template>
 
 <script>
-import Ontop from '../components/Ontop.vue';
 import VueSlickCarousel from "vue-slick-carousel";
 import FooterHome from '../components/FooterHome.vue'
 import "vue-slick-carousel/dist/vue-slick-carousel.css";
@@ -523,7 +522,6 @@ export default {
     Login, 
     VueSlickCarousel,
     FooterHome,
-    Ontop,
     Flickity
   }
 };
