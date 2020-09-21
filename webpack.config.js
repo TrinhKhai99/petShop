@@ -8,9 +8,6 @@ module.exports = {
     publicPath: '/public/',
     filename: 'build.js'
   },
-  plugins: [
-    new UglifyJSPlugin()
-  ],
   module: {
     rules: [
       {
