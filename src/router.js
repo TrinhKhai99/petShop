@@ -1,5 +1,3 @@
-import Vue from 'Vue';
-import Router from 'vue-router';
 import Admin from './views/Admin.vue';
 import Home from './views/Home.vue';
 import UserInfo from './views/user/UserInfo.vue';
