@@ -100,6 +100,7 @@ if (process.env.NODE_ENV === 'production') {
     }),
     new webpack.optimize.UglifyJsPlugin({
       sourceMap: true,
+      "uglify-js": "git://github.com/mishoo/UglifyJS2#harmony-v2.8.22",
       compress: {
         warnings: false
       }
