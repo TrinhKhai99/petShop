@@ -58,7 +58,11 @@ module.exports = {
       {
         test: /\.js$/,
         loader: 'babel-loader',
-        exclude: /node_modules/
+        // exclude: /node_modules/
+        include: [
+          path.resolve('src'), 
+          path.resolve('node_modules/v-calendar/')
+      ]
       },
       {
         test: /\.(png|jpg|gif|svg)$/,
@@ -100,7 +104,6 @@ if (process.env.NODE_ENV === 'production') {
     }),
     new webpack.optimize.UglifyJsPlugin({
       sourceMap: true,
-      "uglify-js": "git://github.com/mishoo/UglifyJS2#harmony-v2.8.22",
       compress: {
         warnings: false
       }
