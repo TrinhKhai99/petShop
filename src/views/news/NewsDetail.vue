@@ -11,7 +11,7 @@
       <div class="card card_" style="width: 38rem;">
         <img
           class="img_ListUser img_noCircle"
-          v-bind:src="'http://petadoption3.j.layershift.co.uk/news/avatar/' + news.avatar"
+          v-bind:src="'https://comic.j.layershift.co.uk/news/avatar/' + news.avatar"
           :alt="news.avatar"
         />
         <div class="card-body">
@@ -32,7 +32,7 @@
       <div class="card card_" style="width: 38rem;">
        <input type="file" @change="uploadFiles" style="display:none" ref="getImage"  class="form-control" />
         <img class="card-img-top img_noCircle" v-if="url"  :src="url" />
-        <img class="card-img-top img_noCircle" v-else-if="!url"  :src="'http://petadoption3.j.layershift.co.uk/news/avatar/' + news.avatar" :alt="news.avatar" />
+        <img class="card-img-top img_noCircle" v-else-if="!url"  :src="'https://comic.j.layershift.co.uk/news/avatar/' + news.avatar" :alt="news.avatar" />
         <div class="card-body text-center">
           <button class="btn btn-secondary" v-on:click="getImage">Nhấp Để Thay Đổi Ảnh</button>
         </div>
