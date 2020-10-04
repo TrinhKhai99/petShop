@@ -7,7 +7,7 @@
     <td>
       <img
         class="img_Newss"
-        v-bind:src="'https://comic.j.layershift.co.uk/news/avatar/' + news.avatar"
+        v-bind:src="'https://petadoption.j.layershift.co.uk/news/avatar/' + news.avatar"
         :alt="news.avatar"
       />
     </td>

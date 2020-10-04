@@ -25,7 +25,7 @@
       <div class="newsHome">
           <hr class="hr">
         <p>{{newsHome.content}}</p>
-        <img :src="'https://comic.j.layershift.co.uk/news/avatar/' + newsHome.avatar" alt="">
+        <img :src="'https://petadoption.j.layershift.co.uk/news/avatar/' + newsHome.avatar" alt="">
       </div>
     </div>
     <ReadyHelp/>

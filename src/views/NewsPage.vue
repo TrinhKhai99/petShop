@@ -19,7 +19,7 @@
         <div v-for="neww in news.objects" :key="neww.newsId" class="col-md-5 news_Item">
           <div class="img_News">
             <span class="month"> {{(new Date(neww.createdDate).toDateString()).slice(4,7)}}</span>
-            <img :src="'https://comic.j.layershift.co.uk/news/avatar/' + neww.avatar" alt="">
+            <img :src="'https://petadoption.j.layershift.co.uk/news/avatar/' + neww.avatar" alt="">
           </div>
           <div class="content_News">
             <span class="date">{{(new Date(neww.createdDate).toDateString()).slice(0,3)}}</span>
@@ -36,7 +36,7 @@
       <div v-if="selectSearch == 'yes'" class="col-md-10 news_Box">
         <div v-for="(newCate, index) in newsByCate.objects.newsDTOS" :key="index" class="col-md-5 news_Item">
           <div class="img_News">
-            <img :src="'https://comic.j.layershift.co.uk/news/avatar/' + newCate.avatar" alt="">
+            <img :src="'https://petadoption.j.layershift.co.uk/news/avatar/' + newCate.avatar" alt="">
           </div>
           <div class="content_News">
             <h3 class="Capitalize">{{ (newCate.title).slice(0, 30) }}...</h3>
@@ -122,7 +122,7 @@ export default {
           page: 1,
           newsCategory: '',
           
-            img :'https://comic.j.layershift.co.uk/news/avatar/',
+            img :'https://petadoption.j.layershift.co.uk/news/avatar/',
             settings: {
   "dots": true,
   "infinite": false,

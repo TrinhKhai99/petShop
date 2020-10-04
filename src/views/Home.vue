@@ -202,7 +202,7 @@
         <div class="row no-gutter newsHome text-justify mb-5">
             <!-- <div v-for="n in news.objects" :key="n.newsId" class="newsHomeBox">
                 <div class="img_NewsHome">
-                    <img :src="'https://comic.j.layershift.co.uk/news/avatar/' + n.avatar" alt="">
+                    <img :src="'https://petadoption.j.layershift.co.uk/news/avatar/' + n.avatar" alt="">
                 </div>
                 <div class="content_NewsHome">
                      <router-link class="mt-3 mb-4 toNewsDetail" :to="{ name: 'NewsHomeDetail', params: { id:n.newsId }}">{{n.title}}</router-link>
@@ -215,7 +215,7 @@
                 <div v-for="(n, index) in news.objects" :key="index" class="newsHomeItem carousel-cell mr-3">
                     <div class="newsHomeImg">
                         <span class="month"> {{(new Date(n.createdDate).toDateString()).slice(4,7)}}</span>
-                        <img :src="'https://comic.j.layershift.co.uk/news/avatar/' + n.avatar" alt="">
+                        <img :src="'https://petadoption.j.layershift.co.uk/news/avatar/' + n.avatar" alt="">
                     </div>
                     <div class="newsHomeContent">
                         <span class="date">{{(new Date(n.createdDate).toDateString()).slice(0,3)}}</span>
@@ -353,9 +353,9 @@ export default {
         isLoggedIn: false,
       image: "",
       imgPet: {
-          item1 :'https://comic.j.layershift.co.uk/pet/image/',
+          item1 :'https://petadoption.j.layershift.co.uk/pet/image/',
           item2 :'src/assets/uploads/News/Video1.jpg',
-          item3 :'https://comic.j.layershift.co.uk/news/avatar/',
+          item3 :'https://petadoption.j.layershift.co.uk/news/avatar/',
           item4: 'src/assets/uploads/News/video2.jpg',
           item5: 'src/assets/uploads/News/dd6cad4a-8b58-4a0d-9e55-3d6a1941d598.jpg',
           item6: 'src/assets/uploads/News/video4.jpg',

@@ -4,7 +4,7 @@ import user from '../assets/apis/user';
     // Xử Lý User
     // Lấy tất cả user
 export const getUsers = ({ commit }, data) => {
-    axios.get(`https://comic.j.layershift.co.uk/admin/user?page=${data.page}`)
+    axios.get(`https://petadoption.j.layershift.co.uk/admin/user?page=${data.page}`)
         .then(respose => {
             commit('SET_USERS', respose.data);
 
@@ -12,7 +12,7 @@ export const getUsers = ({ commit }, data) => {
 }
 
 export const getStatistical = ({ commit }, data) => {
-    axios.get(`https://comic.j.layershift.co.uk/admin/petstatus?page=${data.page}&maxItem=8`)
+    axios.get(`https://petadoption.j.layershift.co.uk/admin/petstatus?page=${data.page}&maxItem=8`)
         .then(respose => {
             commit('SET_STATISTICAL', respose.data);
 
@@ -25,14 +25,14 @@ export const addUsers = ({ commit, dispatch }, user,) => {
             'Content-Type': 'application/json'
         }
     };
-    axios.post('https://comic.j.layershift.co.uk/admin/user/', user, config)
+    axios.post('https://petadoption.j.layershift.co.uk/admin/user/', user, config)
         .then(respose => {
             commit('ADD_USER', respose.data)
             dispatch("addNote", {
                 type: 'success',
                 message: 'Thêm Người Dùng thành công'
             })
-            axios.get('https://comic.j.layershift.co.uk/admin/user/')
+            axios.get('https://petadoption.j.layershift.co.uk/admin/user/')
              .then(respose => {
             commit('SET_USERS', respose.data);
         })
@@ -54,14 +54,14 @@ export const addPetStatusEntry = ({ commit, dispatch }, data,) => {
         }
     };
     
-    axios.post('https://comic.j.layershift.co.uk/admin/petstatus/', data.pet, config)
+    axios.post('https://petadoption.j.layershift.co.uk/admin/petstatus/', data.pet, config)
         .then(respose => {
             // commit('ADD_USER', respose.data)
             dispatch("addNote", {
                 type: 'success',
                 message: 'Cập Nhật Trạng Thái thành công'
             })
-            axios.get(`https://comic.j.layershift.co.uk/admin/pet/${data.id}/petstatus`)
+            axios.get(`https://petadoption.j.layershift.co.uk/admin/pet/${data.id}/petstatus`)
         .then(respose => {
             commit('SET_PET_STATUS_ENTRY', respose.data );
         })
@@ -78,7 +78,7 @@ export const addPetStatusEntry = ({ commit, dispatch }, data,) => {
 
     // Lấy User Theo Id
 export const getUser = ({ commit }, UserId) => {
-    axios.get(`https://comic.j.layershift.co.uk/admin/user/${UserId}`)
+    axios.get(`https://petadoption.j.layershift.co.uk/admin/user/${UserId}`)
         .then(respose => {
             commit('SET_USER', respose.data);
         })
@@ -90,14 +90,14 @@ export const changeRole = ({ commit, dispatch }, userRole) => {
             'Content-Type': 'application/json'
         }
     };
-    axios.put('https://comic.j.layershift.co.uk/admin/user/role', userRole, config)
+    axios.put('https://petadoption.j.layershift.co.uk/admin/user/role', userRole, config)
         .then(respose => {
             commit('CHANGE_ROLE', respose.data)
             dispatch("addNote", {
                 type: 'success',
                 message: 'Đổi quyền hạn thành công'
             })
-            axios.get('https://comic.j.layershift.co.uk/admin/user')
+            axios.get('https://petadoption.j.layershift.co.uk/admin/user')
             .then(respose => {
             commit('SET_USERS', respose.data);
         })
@@ -116,7 +116,7 @@ export const changeRole = ({ commit, dispatch }, userRole) => {
 export const login = ({ commit }, user) => {
     return new Promise((resolve, reject) => {
         commit('auth_request')
-        axios({ url: 'https://comic.j.layershift.co.uk/login', data: user, method: 'POST' })
+        axios({ url: 'https://petadoption.j.layershift.co.uk/login', data: user, method: 'POST' })
             .then(resp => {
                 const dataLogin = {
                     token: resp.data,
@@ -140,7 +140,7 @@ export const login = ({ commit }, user) => {
 export const getUserLogin = ({ commit, dispatch }) => {
     return new Promise((resolve, reject) => {
         const token = localStorage.getItem('token')
-        axios({ url: 'https://comic.j.layershift.co.uk/user', data: token, method: 'GET' })
+        axios({ url: 'https://petadoption.j.layershift.co.uk/user', data: token, method: 'GET' })
             .then(respose => {
                 const infoUserLogin = {
                     userLogin: respose.data,
@@ -175,7 +175,7 @@ export const logout = ({ commit }) => {
     // Xử Lý Tin Tức
 export const getNews = ({ commit }, resultSearch) => {
     let data = []
-    axios.get(`https://comic.j.layershift.co.uk/admin/news?pojo.title=${resultSearch.search}&pojo.newsCategoryDTO.newsCategoryId=${resultSearch.category}&maxItem=${resultSearch.record}&page=${resultSearch.page}`)
+    axios.get(`https://petadoption.j.layershift.co.uk/admin/news?pojo.title=${resultSearch.search}&pojo.newsCategoryDTO.newsCategoryId=${resultSearch.category}&maxItem=${resultSearch.record}&page=${resultSearch.page}`)
         .then(respose => {
             commit('SET_NEWS', data = {
                 news: respose.data,
@@ -191,28 +191,28 @@ export const getNews = ({ commit }, resultSearch) => {
 
 
 export const getNewsCate = ({ commit }) => {
-    axios.get('https://comic.j.layershift.co.uk/admin/newscategory/')
+    axios.get('https://petadoption.j.layershift.co.uk/admin/newscategory/')
         .then(respose => {
             commit('SET_NEWSCATE', respose.data);
         })
 }
 
 export const getNewsCateHome = ({ commit }) => {
-    axios.get('https://comic.j.layershift.co.uk/newscategory/')
+    axios.get('https://petadoption.j.layershift.co.uk/newscategory/')
         .then(respose => {
             commit('SET_NEWSCATE_HOME', respose.data);
         })
 }
 
 export const getNew = ({ commit }, newsId) => {
-    axios.get(`https://comic.j.layershift.co.uk/admin/news/${newsId}`)
+    axios.get(`https://petadoption.j.layershift.co.uk/admin/news/${newsId}`)
         .then(respose => {
             commit('SET_NEW', respose.data);
         })
 }
 
 export const getResultNews = ({ commit }, resultSearch) => {
-    axios.get(`https://comic.j.layershift.co.uk/admin/news?pojo.title=${resultSearch.search}&pojo.newsCategoryDTO.newsCategoryId=${resultSearch.category}&maxItem=${resultSearch.record}&page=${resultSearch.page}`)
+    axios.get(`https://petadoption.j.layershift.co.uk/admin/news?pojo.title=${resultSearch.search}&pojo.newsCategoryDTO.newsCategoryId=${resultSearch.category}&maxItem=${resultSearch.record}&page=${resultSearch.page}`)
         .then(respose => {
             console.log(resultSearch)
             commit('SET_SEARCHNEWS', respose.data);
@@ -222,7 +222,7 @@ export const getResultNews = ({ commit }, resultSearch) => {
 
 export const setRecordNews = ({ commit }, record) => {
     let data = []
-    axios.get(`https://comic.j.layershift.co.uk/admin/news?maxItem=${record}`)
+    axios.get(`https://petadoption.j.layershift.co.uk/admin/news?maxItem=${record}`)
         .then(respose => {
             commit('SET_RECORDNEWS', data = { news: respose.data, record: record });
         })
@@ -230,7 +230,7 @@ export const setRecordNews = ({ commit }, record) => {
 
 export const setNewsCategory = ({ commit }, Category) => {
     let data = []
-    axios.get(`https://comic.j.layershift.co.uk/admin/news?pojo.newsCategoryDTO.newsCategoryId=${Category}`)
+    axios.get(`https://petadoption.j.layershift.co.uk/admin/news?pojo.newsCategoryDTO.newsCategoryId=${Category}`)
         .then(respose => {
             commit('SET_NEWSCATEGORY', data = { news: respose.data, Category: Category });
         })
@@ -242,14 +242,14 @@ export const addNewsCate = ({ commit, dispatch }, newsCate) => {
             'Content-Type': 'application/json'
         }
     };
-    axios.post('https://comic.j.layershift.co.uk/admin/newscategory/', newsCate, config)
+    axios.post('https://petadoption.j.layershift.co.uk/admin/newscategory/', newsCate, config)
         .then(respose => {
             commit('SET_NEWSCATE', respose.data)
             dispatch("addNote", {
                 type: 'success',
                 message: 'Thêm Danh Mục thành công'
             })
-            axios.get('https://comic.j.layershift.co.uk/admin/newscategory/')
+            axios.get('https://petadoption.j.layershift.co.uk/admin/newscategory/')
         .then(respose => {
             commit('SET_NEWSCATE', respose.data);
         })
@@ -262,14 +262,14 @@ export const updateNewsCate = ({ commit, dispatch }, newsCate) => {
             'Content-Type': 'application/json'
         }
     };
-    axios.put('https://comic.j.layershift.co.uk/admin/newscategory/', newsCate, config)
+    axios.put('https://petadoption.j.layershift.co.uk/admin/newscategory/', newsCate, config)
         .then(respose => {
             commit('SET_NEWSCATE', respose.data)
             dispatch("addNote", {
                 type: 'success',
                 message: 'Sửa Danh Mục thành công'
             })
-            axios.get('https://comic.j.layershift.co.uk/admin/newscategory/')
+            axios.get('https://petadoption.j.layershift.co.uk/admin/newscategory/')
         .then(respose => {
             commit('SET_NEWSCATE', respose.data);
         })
@@ -283,14 +283,14 @@ export const addNews = ({ commit, dispatch }, news,) => {
             'Content-Type': 'application/json'
         }
     };
-    axios.post('https://comic.j.layershift.co.uk/admin/news/', news, config)
+    axios.post('https://petadoption.j.layershift.co.uk/admin/news/', news, config)
         .then(respose => {
             commit('ADD_NEWS', respose.data)
             dispatch("addNote", {
                 type: 'success',
                 message: 'Thêm tin tức thành công'
             })
-            axios.get('https://comic.j.layershift.co.uk/admin/news')
+            axios.get('https://petadoption.j.layershift.co.uk/admin/news')
              .then(respose => {
             commit('SET_NEWS_', respose.data);
         })
@@ -313,7 +313,7 @@ export const updateNews = ({ commit, dispatch }, news) => {
     };
     console.log(config)
     console.log(news)
-    axios.put('https://comic.j.layershift.co.uk/admin/news/', news, config)
+    axios.put('https://petadoption.j.layershift.co.uk/admin/news/', news, config)
         .then(respose => {
             commit('UPDATE_NEWS', respose.data)
             dispatch("addNote", {
@@ -330,14 +330,14 @@ export const deleteNews = ({ commit, dispatch }, newsId) => {
         },
         data: [{ "newsId": newsId }]
     };
-    axios.delete('https://comic.j.layershift.co.uk/admin/news/', config)
+    axios.delete('https://petadoption.j.layershift.co.uk/admin/news/', config)
         .then(respose => {
             commit('DELETE_NEWS', newsId)
             dispatch("addNote", {
                 type: 'danger',
                 message: 'Xoá tin tức thành công'
             })
-            axios.get('https://comic.j.layershift.co.uk/admin/news')
+            axios.get('https://petadoption.j.layershift.co.uk/admin/news')
              .then(respose => {
             commit('SET_NEWS_', respose.data);
         })
@@ -345,7 +345,7 @@ export const deleteNews = ({ commit, dispatch }, newsId) => {
 }
 
 export const getNewsHome = ({ commit }, data) => {
-    axios.get(`https://comic.j.layershift.co.uk/news?sortProperty=modifiedDate&sortValue=DESC&maxItem=4&page=${data.page}`)
+    axios.get(`https://petadoption.j.layershift.co.uk/news?sortProperty=modifiedDate&sortValue=DESC&maxItem=4&page=${data.page}`)
         .then(respose => {
             console.log(respose.data)
             commit('SET_NEWSHOME', respose.data);
@@ -353,7 +353,7 @@ export const getNewsHome = ({ commit }, data) => {
 }
 
 export const getNewsHomeDetail = ({ commit }, id) => {
-    axios.get(`https://comic.j.layershift.co.uk/news/${id}`)
+    axios.get(`https://petadoption.j.layershift.co.uk/news/${id}`)
         .then(respose => {
             console.log(respose.data)
             commit('SET_NEWSHOME_DETAIL', respose.data);
@@ -361,7 +361,7 @@ export const getNewsHomeDetail = ({ commit }, id) => {
 }
 
 export const getNewsCateByIdHome = ({ commit }, data) => {
-    axios.get(`https://comic.j.layershift.co.uk/newscategory/${data}/news`)
+    axios.get(`https://petadoption.j.layershift.co.uk/newscategory/${data}/news`)
         .then(respose => {
            console.log(respose.data)
             commit('SET_NEWSHOME_BYCATE', respose.data);
@@ -371,21 +371,21 @@ export const getNewsCateByIdHome = ({ commit }, data) => {
     // Kết thúc Xử Lí Tin Tức
     // Xử Lý Thú Cưng
 export const getPets = ({ commit } , data) => {
-    axios.get(`https://comic.j.layershift.co.uk/admin/pet?maxItem=${data.record}&page=${data.page}`)
+    axios.get(`https://petadoption.j.layershift.co.uk/admin/pet?maxItem=${data.record}&page=${data.page}`)
         .then(respose => {
             commit('SET_PETS', respose.data);
         })
 }
 
 export const getPetEntryType = ({ commit } , data) => {
-    axios.get('https://comic.j.layershift.co.uk/admin/petentrytype/')
+    axios.get('https://petadoption.j.layershift.co.uk/admin/petentrytype/')
         .then(respose => {
             commit('SET_PetEntryType', respose.data);
         })
 }
 
 export const getPetEntryStatus = ({ commit } , data) => {
-    axios.get('https://comic.j.layershift.co.uk/admin/petentrystatus/')
+    axios.get('https://petadoption.j.layershift.co.uk/admin/petentrystatus/')
         .then(respose => {
             commit('SET_PetEntryStatus', respose.data);
         })
@@ -393,7 +393,7 @@ export const getPetEntryStatus = ({ commit } , data) => {
 
 
 export const getRqPet = ({ commit }, data) => {
-    axios.get(`https://comic.j.layershift.co.uk/admin/requestpet?page=${data.page}&maxItem=${data.record}`)
+    axios.get(`https://petadoption.j.layershift.co.uk/admin/requestpet?page=${data.page}&maxItem=${data.record}`)
         .then(respose => {
             console.log(respose)
             commit('SET_RQ_PET', respose.data);
@@ -402,21 +402,21 @@ export const getRqPet = ({ commit }, data) => {
 
 
 export const getNewRqPet = ({ commit }) => {
-    axios.get('https://comic.j.layershift.co.uk/admin/requestpet/pendding')
+    axios.get('https://petadoption.j.layershift.co.uk/admin/requestpet/pendding')
         .then(respose => {
             commit('SET_TOTAL_RQ_PET', respose.data);
         })
 }
 
 export const getNewAppoint = ({ commit }) => {
-    axios.get('https://comic.j.layershift.co.uk/admin/requestpet/today')
+    axios.get('https://petadoption.j.layershift.co.uk/admin/requestpet/today')
         .then(respose => {
             commit('SET_APPOINT_TODAY', respose.data);
         })
 }
 
 export const getPet = ({ commit }, petId) => {
-    axios.get(`https://comic.j.layershift.co.uk/admin/pet/${petId}`)
+    axios.get(`https://petadoption.j.layershift.co.uk/admin/pet/${petId}`)
         .then(respose => {
             commit('SET_PET', respose.data);
         })
@@ -424,7 +424,7 @@ export const getPet = ({ commit }, petId) => {
 }
 
 export const getPetHome = ({ commit }, petId) => {
-    axios.get(`https://comic.j.layershift.co.uk/admin/pet/${petId}`)
+    axios.get(`https://petadoption.j.layershift.co.uk/admin/pet/${petId}`)
         .then(respose => {
             commit('SET_PET_HOME', respose.data);
         })
@@ -435,21 +435,21 @@ export const getPetHome = ({ commit }, petId) => {
 
 
 export const getResultPets = ({ commit }, query) => {
-    axios.get(`https://comic.j.layershift.co.uk/admin/pet?pojo.petName=${query}`)
+    axios.get(`https://petadoption.j.layershift.co.uk/admin/pet?pojo.petName=${query}`)
         .then(respose => {
             commit('SET_RESULTPET', respose.data);
         })
 }
 
 export const getResultRqPets = ({ commit }, query) => {
-    axios.get(`https://comic.j.layershift.co.uk/admin/requestpet?pojo.phoneNumber=${query}`)
+    axios.get(`https://petadoption.j.layershift.co.uk/admin/requestpet?pojo.phoneNumber=${query}`)
         .then(respose => {
             commit('SET_RESULT_RQ_PET', respose.data);
         })
 }
 
 export const getAppointment = ({ commit }, data) => {
-    axios.get(`https://comic.j.layershift.co.uk/admin/requestpet/appointment?pojo.id=${data.search}&pojo.requestAdoptionPetDTO.requesrAdoptionPerId=${data.searchId}&page=${data.page}&maxItem=${data.record}`)
+    axios.get(`https://petadoption.j.layershift.co.uk/admin/requestpet/appointment?pojo.id=${data.search}&pojo.requestAdoptionPetDTO.requesrAdoptionPerId=${data.searchId}&page=${data.page}&maxItem=${data.record}`)
         .then(respose => {
             commit('SET_REQUEST_APPOINT', respose.data);
         })
@@ -457,14 +457,14 @@ export const getAppointment = ({ commit }, data) => {
 
 
 export const getResultRqPetsById = ({ commit }, query) => {
-    axios.get(`https://comic.j.layershift.co.uk/admin/requestpet?pojo.requesrAdoptionPerId=${query}`)
+    axios.get(`https://petadoption.j.layershift.co.uk/admin/requestpet?pojo.requesrAdoptionPerId=${query}`)
         .then(respose => {
             commit('SET_RESULT_RQ_PET', respose.data);
         })
 }
 
 export const getResultPetsById = ({ commit, dispatch }, query) => {
-    axios.get(`https://comic.j.layershift.co.uk/admin/pet?pojo.petId=${query}`)
+    axios.get(`https://petadoption.j.layershift.co.uk/admin/pet?pojo.petId=${query}`)
         .then(respose => {
             commit('SET_RESULTPET_BY_ID', respose.data);
         })
@@ -476,10 +476,10 @@ export const addPet = ({ commit, dispatch }, pet) => {
             'Content-Type': 'application/json'
         }
     };
-    axios.post('https://comic.j.layershift.co.uk/admin/pet/', pet, config)
+    axios.post('https://petadoption.j.layershift.co.uk/admin/pet/', pet, config)
         .then(respose => {
             commit('ADD_PET', respose.data)
-            axios.get(`https://comic.j.layershift.co.uk/admin/pet?maxItem=4&page=1`)
+            axios.get(`https://petadoption.j.layershift.co.uk/admin/pet?maxItem=4&page=1`)
             .then(respose => {
             commit('SET_PETS', respose.data);
             dispatch("addNote", {
@@ -509,7 +509,7 @@ export const rqPet = ({ commit, dispatch }, pet) => {
             'Content-Type': 'application/json'
         }
     };
-    axios.post('https://comic.j.layershift.co.uk/requestpet', pet, config)
+    axios.post('https://petadoption.j.layershift.co.uk/requestpet', pet, config)
         .then(respose => {
             commit('ADD_RQ_PET', respose.data)
             dispatch("addNote", {
@@ -520,21 +520,21 @@ export const rqPet = ({ commit, dispatch }, pet) => {
 }
 
 export const setPetsStatus = ({ commit }, query) => {
-    axios.get(`https://comic.j.layershift.co.uk/admin/pet?status=${query}`)
+    axios.get(`https://petadoption.j.layershift.co.uk/admin/pet?status=${query}`)
         .then(respose => {
             commit('SET_FIND_PETS_STT', respose.data );
         })
 }
 
 export const getPetStatusType = ({ commit }, query) => {
-    axios.get('https://comic.j.layershift.co.uk/admin/petstatustype')
+    axios.get('https://petadoption.j.layershift.co.uk/admin/petstatustype')
         .then(respose => {
             commit('SET_PET_STATUS_TYPE', respose.data );
         })
 }
 
 export const getPetStatusEntry = ({ commit }, query) => {
-    axios.get(`https://comic.j.layershift.co.uk/admin/pet/${query}/petstatus`)
+    axios.get(`https://petadoption.j.layershift.co.uk/admin/pet/${query}/petstatus`)
         .then(respose => {
             commit('SET_PET_STATUS_ENTRY', respose.data );
         })
@@ -543,7 +543,7 @@ export const getPetStatusEntry = ({ commit }, query) => {
 
 export const setRecord = ({ commit }, record) => {
     let data = []
-    axios.get(`https://comic.j.layershift.co.uk/admin/pet?sortProperty=modifiedDate&sortValue=DESC&maxItem=${record}&page=1`)
+    axios.get(`https://petadoption.j.layershift.co.uk/admin/pet?sortProperty=modifiedDate&sortValue=DESC&maxItem=${record}&page=1`)
         .then(respose => {
             commit('SET_RECORD', data = { pets: respose.data, record: record });
         })
@@ -555,14 +555,14 @@ export const updatePet = ({ commit, dispatch }, pet) => {
             'Content-Type': 'application/json'
         }
     };
-    axios.put('https://comic.j.layershift.co.uk/admin/pet/', pet.data, config)
+    axios.put('https://petadoption.j.layershift.co.uk/admin/pet/', pet.data, config)
         .then(respose => {      
             
             dispatch("addNote", {
                 type: 'success',
                 message: 'Sửa Thông Tin Thú Nuôi thành công'
             })  
-            axios.get(`https://comic.j.layershift.co.uk/admin/pet/${pet.petId}`)
+            axios.get(`https://petadoption.j.layershift.co.uk/admin/pet/${pet.petId}`)
             .then(respose => {
             commit('SET_PET', respose.data);    
             
@@ -587,14 +587,14 @@ export const conf = ({ commit, dispatch }, form) => {
             'Content-Type': 'application/json'
         }
     };
-    axios.put('https://comic.j.layershift.co.uk/admin/requestpet/', form, config)
+    axios.put('https://petadoption.j.layershift.co.uk/admin/requestpet/', form, config)
         .then(respose => {
             commit('UPDATE_COF', respose.data)
             dispatch("addNote", {
                 type: 'primary',
                 message: 'Đã Xác Nhận'
             })
-            axios.get(`https://comic.j.layershift.co.uk/admin/requestpet/${form.requestAdoptionPetAppointmentDTO.id}`)
+            axios.get(`https://petadoption.j.layershift.co.uk/admin/requestpet/${form.requestAdoptionPetAppointmentDTO.id}`)
         .then(respose => {
             commit('SET_RQ_ADPOT', respose.data);
         })
@@ -607,14 +607,14 @@ export const confAppoint = ({ commit, dispatch }, form) => {
             'Content-Type': 'application/json'
         }
     };
-    axios.put('https://comic.j.layershift.co.uk/admin/requestpet/appointment/', form, config)
+    axios.put('https://petadoption.j.layershift.co.uk/admin/requestpet/appointment/', form, config)
         .then(respose => {
             commit('UPDATE_COF', respose.data)
             dispatch("addNote", {
                 type: 'primary',
                 message: 'Đã Xác Nhận'
             })
-            axios.get(`https://comic.j.layershift.co.uk/admin/requestpet/appointment/${form.requestAdoptionPetAppointmentDTO.id}`)
+            axios.get(`https://petadoption.j.layershift.co.uk/admin/requestpet/appointment/${form.requestAdoptionPetAppointmentDTO.id}`)
         .then(respose => {
             commit('SET_RQ_APPPOINT', respose.data);
         })
@@ -627,14 +627,14 @@ export const updateAppoint = ({ commit, dispatch }, form) => {
             'Content-Type': 'application/json'
         }
     };
-    axios.put('https://comic.j.layershift.co.uk/admin/requestpet/appointment/date/', form, config)
+    axios.put('https://petadoption.j.layershift.co.uk/admin/requestpet/appointment/date/', form, config)
         .then(respose => {
             commit('UPDATE_COF', respose.data)
             dispatch("addNote", {
                 type: 'primary',
                 message: 'Đã Thay Đổi'
             })
-            axios.get('https://comic.j.layershift.co.uk/admin/requestpet/today')
+            axios.get('https://petadoption.j.layershift.co.uk/admin/requestpet/today')
             .then(respose => {
             commit('SET_APPOINT_TODAY', respose.data);
         })
@@ -647,14 +647,14 @@ export const updateRqAppointContact = ({ commit, dispatch }, form) => {
             'Content-Type': 'application/json'
         }
     };
-    axios.put('https://comic.j.layershift.co.uk/admin/requestpet/appointment/', form, config)
+    axios.put('https://petadoption.j.layershift.co.uk/admin/requestpet/appointment/', form, config)
         .then(respose => {
             commit('UPDATE_COF', respose.data)
             dispatch("addNote", {
                 type: 'primary',
                 message: 'Đã Xác Nhận'
             })
-            axios.get(`https://comic.j.layershift.co.uk/admin/requestpet/appointment/${form.requestAdoptionPetAppointmentDTO.id}`)
+            axios.get(`https://petadoption.j.layershift.co.uk/admin/requestpet/appointment/${form.requestAdoptionPetAppointmentDTO.id}`)
         .then(respose => {
             commit('SET_RQ_APPPOINT', respose.data);
         })
@@ -667,18 +667,18 @@ export const Appointment = ({ commit, dispatch }, form) => {
             'Content-Type': 'application/json'
         }
     };
-    axios.put('https://comic.j.layershift.co.uk/admin/requestpet/', form, config)
+    axios.put('https://petadoption.j.layershift.co.uk/admin/requestpet/', form, config)
         .then(respose => {
             commit('UPDATE_COF', respose.data)
             dispatch("addNote", {
                 type: 'primary',
                 message: 'Tạo Cuộc Hẹn Thành Công'
             })
-            axios.get(`https://comic.j.layershift.co.uk/admin/requestpet/${form.requestAdoptionPetDTO.requesrAdoptionPerId}`)
+            axios.get(`https://petadoption.j.layershift.co.uk/admin/requestpet/${form.requestAdoptionPetDTO.requesrAdoptionPerId}`)
             .then(respose => {
             commit('SET_RQ_ADPOT', respose.data);    
             })
-            axios.get('https://comic.j.layershift.co.uk/admin/requestpet/today')
+            axios.get('https://petadoption.j.layershift.co.uk/admin/requestpet/today')
             .then(respose => {
             commit('SET_APPOINT_TODAY', respose.data);
         })
@@ -694,14 +694,14 @@ export const cancelRq = ({ commit, dispatch }, form) => {
             'Content-Type': 'application/json'
         }
     };
-    axios.put('https://comic.j.layershift.co.uk/admin/requestpet/', form, config)
+    axios.put('https://petadoption.j.layershift.co.uk/admin/requestpet/', form, config)
         .then(respose => {
             commit('UPDATE_COF', respose.data)
             dispatch("addNote", {
                 type: 'primary',
                 message: 'Đã Hủy Yêu Cầu'
             })
-            axios.get(`https://comic.j.layershift.co.uk/admin/requestpet/${form.requestAdoptionPetDTO.requesrAdoptionPerId}`)
+            axios.get(`https://petadoption.j.layershift.co.uk/admin/requestpet/${form.requestAdoptionPetDTO.requesrAdoptionPerId}`)
         .then(respose => {
             commit('SET_RQ_ADPOT', respose.data);
         })
@@ -714,14 +714,14 @@ export const cancelAppoint = ({ commit, dispatch }, form) => {
             'Content-Type': 'application/json'
         }
     };
-    axios.put('https://comic.j.layershift.co.uk/admin/requestpet/appointment/', form, config)
+    axios.put('https://petadoption.j.layershift.co.uk/admin/requestpet/appointment/', form, config)
         .then(respose => {
             commit('UPDATE_COF', respose.data)
             dispatch("addNote", {
                 type: 'danger',
                 message: 'Đã Hủy Yêu Cầu'
             })
-            axios.get(`https://comic.j.layershift.co.uk/admin/requestpet/appointment/${form.requestAdoptionPetAppointmentDTO.id}`)
+            axios.get(`https://petadoption.j.layershift.co.uk/admin/requestpet/appointment/${form.requestAdoptionPetAppointmentDTO.id}`)
         .then(respose => {
             commit('SET_RQ_APPPOINT', respose.data);
         })
@@ -734,14 +734,14 @@ export const successAppointment = ({ commit, dispatch }, form) => {
             'Content-Type': 'application/json'
         }
     };
-    axios.put('https://comic.j.layershift.co.uk/admin/requestpet/appointment/', form, config)
+    axios.put('https://petadoption.j.layershift.co.uk/admin/requestpet/appointment/', form, config)
         .then(respose => {
             commit('UPDATE_COF', respose.data)
             dispatch("addNote", {
                 type: 'primary',
                 message: 'Giao Dịch Thành Công'
             })
-            axios.get(`https://comic.j.layershift.co.uk/admin/requestpet/appointment/${form.requestAdoptionPetAppointmentDTO.id}`)
+            axios.get(`https://petadoption.j.layershift.co.uk/admin/requestpet/appointment/${form.requestAdoptionPetAppointmentDTO.id}`)
         .then(respose => {
             commit('SET_RQ_APPPOINT', respose.data);
         })
@@ -755,10 +755,10 @@ export const deletePet = ({ commit, dispatch }, pet) => {
         },
         data: [{ "petId": pet }]
     };
-    axios.delete('https://comic.j.layershift.co.uk/admin/pet/', config)
+    axios.delete('https://petadoption.j.layershift.co.uk/admin/pet/', config)
         .then(respose => {
             commit('DELETE_PET', pet)
-            axios.get(`https://comic.j.layershift.co.uk/admin/pet?maxItem=4&page=1`)
+            axios.get(`https://petadoption.j.layershift.co.uk/admin/pet?maxItem=4&page=1`)
             .then(respose => {  
             commit('SET_PETS', respose.data);
         })
@@ -769,28 +769,28 @@ export const deletePet = ({ commit, dispatch }, pet) => {
         })
 }
 export const getPetDog = ({ commit }, data) => {
-    axios.get(`https://comic.j.layershift.co.uk/pet?sortProperty=modifiedDate&sortValue=DESC&maxItem=${data}&pojo.petTypeDTO.petTypeId=${1}`)
+    axios.get(`https://petadoption.j.layershift.co.uk/pet?sortProperty=modifiedDate&sortValue=DESC&maxItem=${data}&pojo.petTypeDTO.petTypeId=${1}`)
         .then(respose => {
             commit('SET_PETS_DOG', respose.data);
         })
 }
 
 export const getPetCat = ({ commit }, data) => {
-    axios.get(`https://comic.j.layershift.co.uk/pet?sortProperty=modifiedDate&sortValue=DESC&maxItem=${data}&pojo.petTypeDTO.petTypeId=${2}`)
+    axios.get(`https://petadoption.j.layershift.co.uk/pet?sortProperty=modifiedDate&sortValue=DESC&maxItem=${data}&pojo.petTypeDTO.petTypeId=${2}`)
         .then(respose => {
             commit('SET_PETS_CAT', respose.data);
         })
 }
 
 export const requesrAdoptionPerId = ({ commit }, data) => {
-    axios.get(`https://comic.j.layershift.co.uk/admin/requestpet/${data}`)
+    axios.get(`https://petadoption.j.layershift.co.uk/admin/requestpet/${data}`)
         .then(respose => {
             commit('SET_RQ_ADPOT', respose.data);
         })
 }
 
 export const requesrAppointPerId = ({ commit }, data) => {
-    axios.get(`https://comic.j.layershift.co.uk/admin/requestpet/appointment/${data}`)
+    axios.get(`https://petadoption.j.layershift.co.uk/admin/requestpet/appointment/${data}`)
         .then(respose => {
             commit('SET_RQ_APPPOINT', respose.data);
         })
@@ -802,14 +802,14 @@ export const updateRqContact = ({ commit, dispatch }, form) => {
             'Content-Type': 'application/json'
         }
     };
-    axios.put('https://comic.j.layershift.co.uk/admin/requestpet/', form, config)
+    axios.put('https://petadoption.j.layershift.co.uk/admin/requestpet/', form, config)
         .then(respose => {
             commit('UPDATE_COF', respose.data)
             dispatch("addNote", {
                 type: 'primary',
                 message: 'Đã Xác Nhận'
             })
-            axios.get(`https://comic.j.layershift.co.uk/admin/requestpet/${form.requestAdoptionPetDTO.requesrAdoptionPerId}`)
+            axios.get(`https://petadoption.j.layershift.co.uk/admin/requestpet/${form.requestAdoptionPetDTO.requesrAdoptionPerId}`)
         .then(respose => {
             commit('SET_RQ_ADPOT', respose.data);
         })
@@ -817,21 +817,21 @@ export const updateRqContact = ({ commit, dispatch }, form) => {
 }
 
 export const getPetOther = ({ commit }, data) => {
-    axios.get(`https://comic.j.layershift.co.uk/pet?sortProperty=modifiedDate&sortValue=DESC&maxItem=${data}&pojo.petTypeDTO.petTypeId=${3}`)
+    axios.get(`https://petadoption.j.layershift.co.uk/pet?sortProperty=modifiedDate&sortValue=DESC&maxItem=${data}&pojo.petTypeDTO.petTypeId=${3}`)
         .then(respose => {
             commit('SET_PETS_OTHER', respose.data);
         })
 }
 
 export const getPetsHome = ({ commit }, recordPet) => {
-    axios.get(`https://comic.j.layershift.co.uk/pet?sortProperty=modifiedDate&sortValue=DESC&maxItem=${recordPet}`)
+    axios.get(`https://petadoption.j.layershift.co.uk/pet?sortProperty=modifiedDate&sortValue=DESC&maxItem=${recordPet}`)
         .then(respose => {
             commit('SET_PETS_HOME', respose.data);
         })
 }
 
 export const getResultSearchAdopt = ({ commit }, data) => {
-    axios.get(`https://comic.j.layershift.co.uk/pet?sortProperty=modifiedDate&sortValue=DESC&maxItem=${data.record}&pojo.age=${data.agePet}&pojo.gender=${data.genderPet}&pojo.color=${data.color}&pojo.petName=${data.namePet}`)
+    axios.get(`https://petadoption.j.layershift.co.uk/pet?sortProperty=modifiedDate&sortValue=DESC&maxItem=${data.record}&pojo.age=${data.agePet}&pojo.gender=${data.genderPet}&pojo.color=${data.color}&pojo.petName=${data.namePet}`)
         .then(respose => {
             commit('SET_ALL_PETS', respose.data);
         })
@@ -839,21 +839,21 @@ export const getResultSearchAdopt = ({ commit }, data) => {
     //Kết Thúc Xử Lý Pet
     //Xử Lý Sản Phẩm
 export const getProductCate = ({ commit }) => {
-    axios.get('https://comic.j.layershift.co.uk/admin/productcategory?sortProperty=modifiedDate&sortValue=DESC&maxItem=4&page=1')
+    axios.get('https://petadoption.j.layershift.co.uk/admin/productcategory?sortProperty=modifiedDate&sortValue=DESC&maxItem=4&page=1')
         .then(respose => {
             commit('SET_PRODUCTCATE', respose.data);
         })
 }
 
 export const getProducts = ({ commit }, data) => {
-    axios.get(`https://comic.j.layershift.co.uk/admin/product?maxItem=${data.record}&page=${data.page}`)
+    axios.get(`https://petadoption.j.layershift.co.uk/admin/product?maxItem=${data.record}&page=${data.page}`)
         .then(respose => {
             commit('SET_PRODUCTS', respose.data);
         })
 }
 
 export const getProductsHome = ({ commit }, data) => {
-    axios.get(`https://comic.j.layershift.co.uk/product?maxItem=${data.record}&page=${data.page}`)
+    axios.get(`https://petadoption.j.layershift.co.uk/product?maxItem=${data.record}&page=${data.page}`)
         .then(respose => {
             console.log(respose.data)
             commit('SET_PRODUCTS_HOME', respose.data);
@@ -866,14 +866,14 @@ export const addProduct = ({ commit, dispatch }, products,) => {
             'Content-Type': 'application/json'
         }
     };
-    axios.post('https://comic.j.layershift.co.uk/admin/product', products, config)
+    axios.post('https://petadoption.j.layershift.co.uk/admin/product', products, config)
         .then(respose => {
             commit('ADD_PRODUCT', respose.data)
             dispatch("addNote", {
                 type: 'success',
                 message: 'Thêm Sản Phẩm thành công'
             })
-            axios.get('https://comic.j.layershift.co.uk/admin/product')
+            axios.get('https://petadoption.j.layershift.co.uk/admin/product')
             .then(respose => {
             commit('SET_PRODUCTS', respose.data);
         })
@@ -895,14 +895,14 @@ export const addProductCate = ({ commit, dispatch }, products,) => {
             'Content-Type': 'application/json'
         }
     };
-    axios.post('https://comic.j.layershift.co.uk/admin/productcategory', products, config)
+    axios.post('https://petadoption.j.layershift.co.uk/admin/productcategory', products, config)
         .then(respose => {
             commit('ADD_PRODUCTCATE', respose.data)
             dispatch("addNote", {
                 type: 'success',
                 message: 'Thêm Danh Mục thành công'
             })
-            axios.get('https://comic.j.layershift.co.uk/admin/productcategory?sortProperty=modifiedDate&sortValue=DESC&maxItem=4&page=1')
+            axios.get('https://petadoption.j.layershift.co.uk/admin/productcategory?sortProperty=modifiedDate&sortValue=DESC&maxItem=4&page=1')
             .then(respose => {
             commit('SET_PRODUCTCATE', respose.data);
         })
@@ -917,14 +917,14 @@ export const deleteProCate = ({ commit, dispatch }, productCategoryId) => {
         },
         data: [{ "productCategoryId": productCategoryId }]
     };
-    axios.delete('https://comic.j.layershift.co.uk/admin/productcategory', config)
+    axios.delete('https://petadoption.j.layershift.co.uk/admin/productcategory', config)
         .then(respose => {
             commit('DELETE_PROCATE', productCategoryId)
             dispatch("addNote", {
                 type: 'danger',
                 message: 'Xoá Danh mục thành công'
             })
-            axios.get('https://comic.j.layershift.co.uk/admin/productcategory?sortProperty=modifiedDate&sortValue=DESC&maxItem=4&page=1')
+            axios.get('https://petadoption.j.layershift.co.uk/admin/productcategory?sortProperty=modifiedDate&sortValue=DESC&maxItem=4&page=1')
             .then(respose => {
             commit('SET_PRODUCTCATE', respose.data);
         })
@@ -940,14 +940,14 @@ export const deleteProduct = ({ commit, dispatch }, productId) => {
         },
         data: [{ "productId": productId }]
     };
-    axios.delete('https://comic.j.layershift.co.uk/admin/product', config)
+    axios.delete('https://petadoption.j.layershift.co.uk/admin/product', config)
         .then(respose => {
             commit('DELETE_PRODUCT', productId)
             dispatch("addNote", {
                 type: 'danger',
                 message: 'Xoá Sản Phẩm thành công'
             })
-            axios.get('https://comic.j.layershift.co.uk/admin/product')
+            axios.get('https://petadoption.j.layershift.co.uk/admin/product')
             .then(respose => {
             commit('SET_PRODUCTS', respose.data);
         })
@@ -959,21 +959,21 @@ export const deleteProduct = ({ commit, dispatch }, productId) => {
 
     //Các Xử Lý Khác
 export const setRqStatus = ({ commit }, query) => {
-    axios.get(`https://comic.j.layershift.co.uk/admin/requestpetstatus/${query}/requestpet`)
+    axios.get(`https://petadoption.j.layershift.co.uk/admin/requestpetstatus/${query}/requestpet`)
         .then(respose => {
             commit('SET_FIND_RQ_PETS_STT', respose.data );
         })
 }
 
 export const setRqStatus1 = ({ commit }, query) => {
-    axios.get(`https://comic.j.layershift.co.uk/admin/requestpetstatus/${query}/requestpet`)
+    axios.get(`https://petadoption.j.layershift.co.uk/admin/requestpetstatus/${query}/requestpet`)
         .then(respose => {
             commit('SET_FIND_RQ_PETS_STT_1', respose.data );
         })
 }
 
 export const setRqStatus_Contact = ({ commit }, query) => {
-    axios.get(`https://comic.j.layershift.co.uk/admin/requestpetstatus/${query}/requestpet`)
+    axios.get(`https://petadoption.j.layershift.co.uk/admin/requestpetstatus/${query}/requestpet`)
         .then(respose => {
             commit('SET_FIND_RQ_PETS_STT_CONTATCT', respose.data );
         })
@@ -982,7 +982,7 @@ export const setRqStatus_Contact = ({ commit }, query) => {
 
 export const getPage = ({ commit }, pageRecord) => {
     let data = []
-    axios.get(`https://comic.j.layershift.co.uk/admin/pet?sortProperty=modifiedDate&sortValue=DESC&maxItem=${pageRecord.record}&page=${pageRecord.page}`)
+    axios.get(`https://petadoption.j.layershift.co.uk/admin/pet?sortProperty=modifiedDate&sortValue=DESC&maxItem=${pageRecord.record}&page=${pageRecord.page}`)
         .then(respose => {
             commit('SET_PAGE', data = { pets: respose.data, page: pageRecord.page, record: pageRecord.record });
         })
@@ -990,7 +990,7 @@ export const getPage = ({ commit }, pageRecord) => {
 
 // export const getPageNews = ({ commit }, pageRecord) => {
 //     let data = []
-//     axios.get(`https://comic.j.layershift.co.uk/admin/news?maxItem=${pageRecord.record}&page=${pageRecord.page}&pojo.title=${pageRecord.search}`)
+//     axios.get(`https://petadoption.j.layershift.co.uk/admin/news?maxItem=${pageRecord.record}&page=${pageRecord.page}&pojo.title=${pageRecord.search}`)
 //         .then(respose => {
 //             commit('SET_PAGENEWS', data = { news: respose.data, page: pageRecord.page, search: search});
 //         })
@@ -1002,13 +1002,13 @@ export const handingWait = ({ commit, dispatch }, rq) => {
             'Content-Type': 'application/json'
         }
     };
-    axios.put('https://comic.j.layershift.co.uk/admin/requestpet/', rq, config)
+    axios.put('https://petadoption.j.layershift.co.uk/admin/requestpet/', rq, config)
         .then(respose => {
             dispatch("addNote", {
                 type: 'success',
                 message: 'Chuyển Sang Đang Liên Hệ'
             })
-            axios.get('https://comic.j.layershift.co.uk/admin/requestpet/pendding')
+            axios.get('https://petadoption.j.layershift.co.uk/admin/requestpet/pendding')
             .then(respose => {
             commit('SET_TOTAL_RQ_PET', respose.data);
         })
@@ -1043,7 +1043,7 @@ export const endLoad = ({ commit }) => {
 }
 
 export const getEmployee = ({ commit } , data) => {
-    axios.get(`https://comic.j.layershift.co.uk/admin/employee?page=${data.page}&pojo.employeeId=${data.search}`)
+    axios.get(`https://petadoption.j.layershift.co.uk/admin/employee?page=${data.page}&pojo.employeeId=${data.search}`)
         .then(respose => {
             commit('SET_EMPLOYEE', respose.data);
 
@@ -1051,7 +1051,7 @@ export const getEmployee = ({ commit } , data) => {
 }
 
 export const getEmployeeById = ({ commit }, id) => {
-    axios.get(`https://comic.j.layershift.co.uk/admin/employee/${id}`)
+    axios.get(`https://petadoption.j.layershift.co.uk/admin/employee/${id}`)
         .then(respose => {
             commit('SET_EMPLOYEE_BY_ID', respose.data);
 
@@ -1059,7 +1059,7 @@ export const getEmployeeById = ({ commit }, id) => {
 }
 
 export const getDepartment = ({ commit }) => {
-    axios.get('https://comic.j.layershift.co.uk/admin/department')
+    axios.get('https://petadoption.j.layershift.co.uk/admin/department')
         .then(respose => {
             commit('SET_EMPLOYEE_DEPART', respose.data);
 
@@ -1067,7 +1067,7 @@ export const getDepartment = ({ commit }) => {
 }
 
 export const getEmployeeRescueOrder = ({ commit } ,id) => {
-    axios.get(`https://comic.j.layershift.co.uk/admin/employee/${id}/rescueorder`)
+    axios.get(`https://petadoption.j.layershift.co.uk/admin/employee/${id}/rescueorder`)
         .then(respose => {
             commit('SET_EMPLOYEE_RESCUEODER', respose.data);
 
@@ -1080,14 +1080,14 @@ export const addEmployee = ({ commit, dispatch }, employee) => {
             'Content-Type': 'application/json'
         }
     };
-    axios.post('https://comic.j.layershift.co.uk/admin/employee/', employee, config)
+    axios.post('https://petadoption.j.layershift.co.uk/admin/employee/', employee, config)
         .then(respose => {
             commit('ADD_EMPLOYEE', respose.data)
             dispatch("addNote", {
                 type: 'success',
                 message: 'Thêm Nhân Viên thành công'
             })
-            axios.get('https://comic.j.layershift.co.uk/admin/employee/')
+            axios.get('https://petadoption.j.layershift.co.uk/admin/employee/')
             .then(respose => {
             commit('SET_EMPLOYEE', respose.data);
 
@@ -1114,7 +1114,7 @@ export const deleteEmployee = ({ commit, dispatch }, id) => {
                 type: 'danger',
                 message: 'Xoá Nhân Viên thành công'
             })
-            axios.get('https://comic.j.layershift.co.uk/admin/employee/')
+            axios.get('https://petadoption.j.layershift.co.uk/admin/employee/')
             .then(respose => {
             commit('SET_EMPLOYEE', respose.data);
         })
@@ -1134,14 +1134,14 @@ export const updateEmployee = ({ commit, dispatch }, employee) => {
             'Content-Type': 'application/json'
         }
     };
-    axios.put('https://comic.j.layershift.co.uk/admin/employee/', employee, config)
+    axios.put('https://petadoption.j.layershift.co.uk/admin/employee/', employee, config)
         .then(respose => {
             // commit('SET_EMPLOYEE', respose.data)
             dispatch("addNote", {
                 type: 'success',
                 message: 'Sửa Nhân Viên thành công'
             })
-            axios.get(`https://comic.j.layershift.co.uk/admin/employee/${employee.employeeId}`)
+            axios.get(`https://petadoption.j.layershift.co.uk/admin/employee/${employee.employeeId}`)
             .then(respose => {
             commit('SET_EMPLOYEE_BY_ID', respose.data);
         })
@@ -1153,14 +1153,14 @@ export const updateRescue = ({ commit, dispatch }, rescue) => {
             'Content-Type': 'application/json'
         }
     };
-    axios.put('https://comic.j.layershift.co.uk/admin/rescueorder/', rescue, config)
+    axios.put('https://petadoption.j.layershift.co.uk/admin/rescueorder/', rescue, config)
         .then(respose => {
             // commit('SET_EMPLOYEE', respose.data)
             dispatch("addNote", {
                 type: 'success',
                 message: 'Sửa Thông Tin Giải Cứu thành công'
             })
-            axios.get(`https://comic.j.layershift.co.uk/admin/rescueorder/${rescue.rescueOrderId}`)
+            axios.get(`https://petadoption.j.layershift.co.uk/admin/rescueorder/${rescue.rescueOrderId}`)
             .then(respose => {
             commit('SET_DETAIL_RESCUES', respose.data);
         })
@@ -1174,14 +1174,14 @@ export const updateFoster = ({ commit, dispatch }, foster) => {
             'Content-Type': 'application/json'
         }
     };
-    axios.put('https://comic.j.layershift.co.uk/admin/fosterpet/', foster, config)
+    axios.put('https://petadoption.j.layershift.co.uk/admin/fosterpet/', foster, config)
         .then(respose => {
             // commit('SET_EMPLOYEE', respose.data)
             dispatch("addNote", {
                 type: 'success',
                 message: 'Sửa Thông Tin Giải Cứu thành công'
             })
-            axios.get(`https://comic.j.layershift.co.uk/admin/fosterpet/${foster.fosterPetId}`)
+            axios.get(`https://petadoption.j.layershift.co.uk/admin/fosterpet/${foster.fosterPetId}`)
             .then(respose => {
             commit('SET_DETAIL_FOSTER', respose.data);
         })
@@ -1190,7 +1190,7 @@ export const updateFoster = ({ commit, dispatch }, foster) => {
 }
 
 export const getRescue = ({ commit }, data) => {
-    axios.get(`https://comic.j.layershift.co.uk/admin/rescueorder?page=${data.page}`)
+    axios.get(`https://petadoption.j.layershift.co.uk/admin/rescueorder?page=${data.page}`)
         .then(respose => {
             commit('SET_RESCUES', respose.data);
 
@@ -1198,7 +1198,7 @@ export const getRescue = ({ commit }, data) => {
 }
 
 export const getFosterPet = ({ commit }, data) => {
-    axios.get(`https://comic.j.layershift.co.uk/admin/fosterpet?page=${data.page}`)
+    axios.get(`https://petadoption.j.layershift.co.uk/admin/fosterpet?page=${data.page}`)
         .then(respose => {
             commit('SET_FOSTER_PET', respose.data);
 
@@ -1206,7 +1206,7 @@ export const getFosterPet = ({ commit }, data) => {
 }
 
 export const getDetailRescue = ({ commit }, id) => {
-    axios.get(`https://comic.j.layershift.co.uk/admin/rescueorder/${id}`)
+    axios.get(`https://petadoption.j.layershift.co.uk/admin/rescueorder/${id}`)
         .then(respose => {
             commit('SET_DETAIL_RESCUES', respose.data);
 
@@ -1214,7 +1214,7 @@ export const getDetailRescue = ({ commit }, id) => {
 }
 
 export const getDetailFoster = ({ commit }, id) => {
-    axios.get(`https://comic.j.layershift.co.uk/admin/fosterpet/${id}`)
+    axios.get(`https://petadoption.j.layershift.co.uk/admin/fosterpet/${id}`)
         .then(respose => {
             commit('SET_DETAIL_FOSTER', respose.data);
 
@@ -1223,7 +1223,7 @@ export const getDetailFoster = ({ commit }, id) => {
 
 
 export const getEmployeeDepart = ({ commit }, data) => {
-    axios.get(`https://comic.j.layershift.co.uk/admin/employee?pojo.departmentDTO.departmentId=${data.id}&pojo.employeeId=${data.search}`)
+    axios.get(`https://petadoption.j.layershift.co.uk/admin/employee?pojo.departmentDTO.departmentId=${data.id}&pojo.employeeId=${data.search}`)
         .then(respose => {
             commit('SET_EMPLOYEE_BYDE', respose.data);
 
@@ -1231,14 +1231,14 @@ export const getEmployeeDepart = ({ commit }, data) => {
 }
 
 export const getEmployeeFoster = ({ commit }, data) => {
-    axios.get(`https://comic.j.layershift.co.uk/admin/employee?pojo.departmentDTO.departmentId=${data.id}&pojo.employeeId=${data.search}`)
+    axios.get(`https://petadoption.j.layershift.co.uk/admin/employee?pojo.departmentDTO.departmentId=${data.id}&pojo.employeeId=${data.search}`)
         .then(respose => {
             commit('SET_EMPLOYEE_FOSTER', respose.data);
         })
 }
 
 export const getEmployeeFosterForDetail = ({ commit }, id) => {
-    axios.get(`https://comic.j.layershift.co.uk/admin/employee/${id}/fosterpet`)
+    axios.get(`https://petadoption.j.layershift.co.uk/admin/employee/${id}/fosterpet`)
         .then(respose => {
             commit('SET_EMPLOYEE_FOSTER_FOR_DETAIL', respose.data);
         })
@@ -1275,13 +1275,13 @@ export const addRescue = ({ commit, dispatch }, datas) => {
             'Content-Type': 'application/json'
         }
     };
-    axios.post('https://comic.j.layershift.co.uk/admin/rescueorder/', datas, config)
+    axios.post('https://petadoption.j.layershift.co.uk/admin/rescueorder/', datas, config)
         .then(respose => {
             dispatch("addNote", {
                 type: 'success',
                 message: 'Thêm Thông Tin Giải Cứu thành công'
             })
-            axios.get('https://comic.j.layershift.co.uk/admin/rescueorder/')
+            axios.get('https://petadoption.j.layershift.co.uk/admin/rescueorder/')
         .then(respose => {
             commit('SET_RESCUES', respose.data);
         })
@@ -1302,13 +1302,13 @@ export const addFoster = ({ commit, dispatch }, datas) => {
             'Content-Type': 'application/json'
         }
     };
-    axios.post('https://comic.j.layershift.co.uk/admin/fosterpet/', datas, config)
+    axios.post('https://petadoption.j.layershift.co.uk/admin/fosterpet/', datas, config)
         .then(respose => {
             dispatch("addNote", {
                 type: 'success',
                 message: 'Thêm Thông Tin Chăm Sóc thành công'
             })
-            axios.get('https://comic.j.layershift.co.uk/admin/fosterpet/')
+            axios.get('https://petadoption.j.layershift.co.uk/admin/fosterpet/')
         .then(respose => {
             commit('SET_FOSTER_PET', respose.data);
         })
@@ -1324,7 +1324,7 @@ export const addFoster = ({ commit, dispatch }, datas) => {
 }
 
 export const getPetRescueorder = ({ commit }, id) => {
-    axios.get(`https://comic.j.layershift.co.uk/admin/rescueorder/pet?pojo.petId=${id}`)
+    axios.get(`https://petadoption.j.layershift.co.uk/admin/rescueorder/pet?pojo.petId=${id}`)
         .then(respose => {
             commit('SET_PET_RESCUE_ORDER', respose.data);
 
@@ -1332,7 +1332,7 @@ export const getPetRescueorder = ({ commit }, id) => {
 }
 
 export const getPetFoster = ({ commit } , id) => {
-    axios.get(`https://comic.j.layershift.co.uk/admin/fosterpet/pet?pojo.petId=${id}`)
+    axios.get(`https://petadoption.j.layershift.co.uk/admin/fosterpet/pet?pojo.petId=${id}`)
         .then(respose => {
             commit('SET_PET_FOSTER', respose.data);
 
@@ -1362,17 +1362,17 @@ export const addPetToRescue = ({ commit, dispatch }, data) => {
             'Content-Type': 'application/json'
         }
     };
-    axios.post(`https://comic.j.layershift.co.uk/admin/rescueorder/${data.rescueOrderId}/pet`, petId, config)
+    axios.post(`https://petadoption.j.layershift.co.uk/admin/rescueorder/${data.rescueOrderId}/pet`, petId, config)
         .then(respose => {
             dispatch("addNote", {
                 type: 'success',
                 message: 'Thêm Pet Vào Giải Cứu thành công'
             })
-            axios.get('https://comic.j.layershift.co.uk/admin/rescueorder/')
+            axios.get('https://petadoption.j.layershift.co.uk/admin/rescueorder/')
             .then(respose => {
             commit('SET_RESCUES', respose.data);
             })
-             axios.get('https://comic.j.layershift.co.uk/admin/rescueorder/pet')
+             axios.get('https://petadoption.j.layershift.co.uk/admin/rescueorder/pet')
             .then(respose => {
             commit('SET_PET_RESCUE_ORDER', respose.data);
         })
@@ -1394,17 +1394,17 @@ export const addPetToFoster = ({ commit, dispatch }, data) => {
             'Content-Type': 'application/json'
         }
     };
-    axios.post(`https://comic.j.layershift.co.uk/admin/fosterpet/${data.fosterPetId}/pet`, petId, config)
+    axios.post(`https://petadoption.j.layershift.co.uk/admin/fosterpet/${data.fosterPetId}/pet`, petId, config)
         .then(respose => {
             dispatch("addNote", {
                 type: 'success',
                 message: 'Thêm Pet Vào Chăm Sóc thành công'
             })
-            axios.get('https://comic.j.layershift.co.uk/admin/fosterpet/')
+            axios.get('https://petadoption.j.layershift.co.uk/admin/fosterpet/')
             .then(respose => {
             commit('SET_FOSTER_PET', respose.data);
             })
-             axios.get('https://comic.j.layershift.co.uk/admin/fosterpet/pet')
+             axios.get('https://petadoption.j.layershift.co.uk/admin/fosterpet/pet')
             .then(respose => {
             commit('SET_PET_FOSTER', respose.data);
         })
@@ -1428,14 +1428,14 @@ export const deletePetRescue = ({ commit, dispatch }, datas) => {
         data: { "petId": datas.form1.petId }
     };
     
-    axios.delete(`https://comic.j.layershift.co.uk/admin/rescueorder/${datas.rescueOrderId}/pet`, config)
+    axios.delete(`https://petadoption.j.layershift.co.uk/admin/rescueorder/${datas.rescueOrderId}/pet`, config)
         .then(respose => {
             // commit('DELETE_NEWS', newsId)
             dispatch("addNote", {
                 type: 'danger',
                 message: 'Xoá Thú Nuôi thành công'
             })
-            axios.get(`https://comic.j.layershift.co.uk/admin/rescueorder/${datas.rescueOrderId}`)
+            axios.get(`https://petadoption.j.layershift.co.uk/admin/rescueorder/${datas.rescueOrderId}`)
             .then(respose => {
             commit('SET_DETAIL_RESCUES', respose.data);
             })
@@ -1459,14 +1459,14 @@ export const deletePetFoster = ({ commit, dispatch }, datas) => {
         data: { "petId": datas.form1.petId }
     };
     
-    axios.delete(`https://comic.j.layershift.co.uk/admin/fosterpet/${datas.fosterPetId}/pet`, config)
+    axios.delete(`https://petadoption.j.layershift.co.uk/admin/fosterpet/${datas.fosterPetId}/pet`, config)
         .then(respose => {
             // commit('DELETE_NEWS', newsId)
             dispatch("addNote", {
                 type: 'danger',
                 message: 'Xoá Thú Nuôi khỏi Chăm Sóc thành công'
             })
-            axios.get(`https://comic.j.layershift.co.uk/admin/fosterpet/${datas.fosterPetId}`)
+            axios.get(`https://petadoption.j.layershift.co.uk/admin/fosterpet/${datas.fosterPetId}`)
             .then(respose => {
             commit('SET_DETAIL_FOSTER', respose.data);
             })

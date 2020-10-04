@@ -317,7 +317,7 @@ export default {
     },
     uploadFiles(event) {
       console.log(event);
-      const uRL = "https://comic.j.layershift.co.uk/admin/pet/image/";
+      const uRL = "https://petadoption.j.layershift.co.uk/admin/pet/image/";
       const file = event.target.files[0];
       this.url = URL.createObjectURL(file);
       let data = new FormData();

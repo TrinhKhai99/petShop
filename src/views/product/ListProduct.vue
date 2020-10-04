@@ -13,7 +13,7 @@
     <td>
       <img
         class="img_Product"
-        v-bind:src="'https://comic.j.layershift.co.uk/pet/image/' + product.image"
+        v-bind:src="'https://petadoption.j.layershift.co.uk/pet/image/' + product.image"
         :alt="product.image"
       />
     </td>

@@ -23,7 +23,7 @@
     <div  class="row mt-5 mb-5 no-gutter products">
       <div v-for="(product, index) in products.objects" :key="index" class=" product_Box">
         <div class="product_Img">
-          <img v-bind:src="'https://comic.j.layershift.co.uk/pet/image/' + product.image" :alt="product.image" />
+          <img v-bind:src="'https://petadoption.j.layershift.co.uk/pet/image/' + product.image" :alt="product.image" />
         </div>
         <div class="product_Content">
           <div class="mt-3 mb-5 product_Title" >{{product.name}}</div>

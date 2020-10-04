@@ -13,7 +13,7 @@
     <td>
       <img
           class="img_ListUser"
-          v-bind:src="'https://comic.j.layershift.co.uk/pet/image/' + pet.image"
+          v-bind:src="'https://petadoption.j.layershift.co.uk/pet/image/' + pet.image"
         />
     </td>
     <td v-if="pet.petStatusDTOS[0]">{{pet.petStatusDTOS[0].petStatusTypeDTO.name}}</td>
@@ -61,7 +61,7 @@ export default {
     // //     data:  [{"petId": this.pet.petId}]
     // //   };
     // //  axios
-    // //     .delete("http://petadoption.j.layershift.co.uk/pet/", config )
+    // //     .delete("http://https://petadoption.j.layershift.co.uk/pet/", config )
     // //     .then(response => {
     // //       console.log(response);
     // //     });

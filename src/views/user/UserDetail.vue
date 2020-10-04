@@ -45,7 +45,7 @@
           <div class="card card_" style="width: 38rem;">
             <img
               class="card-img-top img_Avatar"
-              v-bind:src="'https://comic.j.layershift.co.uk/user/avatar/' + user.avatar"
+              v-bind:src="'https://petadoption.j.layershift.co.uk/user/avatar/' + user.avatar"
               :alt="user.userName"
             />
             <div class="card-body">

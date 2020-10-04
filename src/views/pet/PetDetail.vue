@@ -55,7 +55,7 @@
     </button>
     <div class="mt-4" id="layoutSidenav_content" v-if="tabSelected != 'updatePet'">
       <div class="card card_" style="width: 38rem;">
-        <img class="card-img-top img_Avatar" :src="'https://comic.j.layershift.co.uk/pet/image/' + pet.image" :alt="pet.petName" />
+        <img class="card-img-top img_Avatar" :src="'https://petadoption.j.layershift.co.uk/pet/image/' + pet.image" :alt="pet.petName" />
         <div class="card-body">
           <h5 class="card-title text-center" style="font-size: 2.1rem;">{{pet.petName}}</h5>
         </div>
@@ -89,7 +89,7 @@
       <div class="card card_" style="width: 38rem;">
        <input type="file" @change="uploadFiles" style="display:none" ref="getImagePet"  class="form-control" />
         <img class="card-img-top img_Avatar" v-if="url"  :src="url" :alt="pet.petName" />
-        <img class="card-img-top img_Avatar" v-else-if="!url" :src="'https://comic.j.layershift.co.uk/pet/image/' + pet.image" :alt="pet.petName" />
+        <img class="card-img-top img_Avatar" v-else-if="!url" :src="'https://petadoption.j.layershift.co.uk/pet/image/' + pet.image" :alt="pet.petName" />
         <div class="card-body text-center">
           <button class="btn btn-secondary" v-on:click="getImagePet">Nhấp Để Thay Đổi Ảnh</button>
         </div>
@@ -250,7 +250,7 @@
           <img
             v-if="!url"
             class="float-left mr-3 img_Avatar"
-            :src="'https://comic.j.layershift.co.uk/pet/image/' + pet.image"
+            :src="'https://petadoption.j.layershift.co.uk/pet/image/' + pet.image"
             :alt="pet.petName"
           />
           <img v-else-if="url" class="float-left mr-3 img_Avatar" :src="url" :alt="pet.petName" />
@@ -780,7 +780,7 @@ export default {
   },
   methods: {
     uploadFiles(event) {
-      const uRL = "https://comic.j.layershift.co.uk/admin/pet/image/";
+      const uRL = "https://petadoption.j.layershift.co.uk/admin/pet/image/";
       const file = event.target.files[0];
       this.url = URL.createObjectURL(file);
       let data = new FormData();

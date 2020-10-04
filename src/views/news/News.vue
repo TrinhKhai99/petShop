@@ -186,7 +186,7 @@ export default {
       console.log(event);
       const file = event.target.files[0];
       this.url = URL.createObjectURL(file);
-      const uRL = "https://comic.j.layershift.co.uk/admin/news/avatar/";
+      const uRL = "https://petadoption.j.layershift.co.uk/admin/news/avatar/";
 
       let data = new FormData();
       data.append("name", "my-picture");

@@ -16,7 +16,7 @@
     </div>
     <div class="row no-gutter pet_Info">
       <div class="col-md-5 img_PetHome">
-        <img :src="'https://comic.j.layershift.co.uk/pet/image/' + pets.image" alt />
+        <img :src="'https://petadoption.j.layershift.co.uk/pet/image/' + pets.image" alt />
       </div>
       <div class="col-md-7 pet_Content">
         <div class="petName">{{ pets.petName }}</div>
@@ -207,7 +207,7 @@
     </div>
     <div class="row no-gutter pet_Gender">
       <div class="col-md-3 pet_ImgItem">
-        <img :src="'https://comic.j.layershift.co.uk/pet/image/' + pets.image" alt />
+        <img :src="'https://petadoption.j.layershift.co.uk/pet/image/' + pets.image" alt />
       </div>
       <div class="col-md-3 pet_ImgItem"></div>
       <div class="col-md-3 pet_ImgItem"></div>
@@ -271,9 +271,9 @@ export default {
       },
       image: "",
       imgPet: {
-          item1 :'https://comic.j.layershift.co.uk/pet/image/',
+          item1 :'https://petadoption.j.layershift.co.uk/pet/image/',
           item2 :'src/assets/uploads/News/Video1.jpg',
-          item3 :'https://comic.j.layershift.co.uk/news/avatar/',
+          item3 :'https://petadoption.j.layershift.co.uk/news/avatar/',
       },
       settings2: {
             "dots": true,

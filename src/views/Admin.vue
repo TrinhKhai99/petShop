@@ -11,7 +11,7 @@
           <div class="user-pic">
             <img
               class="img-responsive img-rounded"
-              :src="'https://comic.j.layershift.co.uk/user/avatar/' + userLogin.avatar"
+              :src="'https://petadoption.j.layershift.co.uk/user/avatar/' + userLogin.avatar"
               style="border:1px; border-radius: 50%"
               alt="User picture"
             />

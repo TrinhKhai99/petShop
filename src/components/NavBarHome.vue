@@ -24,7 +24,7 @@
             <router-link exact active-class="pink" :to="{ name: 'contact' }">LIÊN HỆ</router-link>
             <div v-if="isLogin" class="btn-group" style="height:50%; margin-top: 25px">
             <button type="button" class="btn dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                <img id="userAvatar" :src="'https://comic.j.layershift.co.uk/user/avatar/' + userLogin.avatar" width="50px" height="50px"/>
+                <img id="userAvatar" :src="'https://petadoption.j.layershift.co.uk/user/avatar/' + userLogin.avatar" width="50px" height="50px"/>
             </button>
             <div class="dropdown-menu dropdown-menu-right">
                 <button class="dropdown-item" type="button"><i style="font-size: 1.2rem; color:#7158e2" class="fas fa-user-circle"></i>  {{userLogin.userName}}</button>
@@ -51,7 +51,7 @@
             <router-link :to="{ name: 'contact' }">LIÊN HỆ</router-link>
             <div v-if="isLogin" class="btn-group" style="height:50%; margin-top: 25px">
             <button type="button" class="btn dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                <img id="userAvatar" :src="'https://comic.j.layershift.co.uk/user/avatar/' + userLogin.avatar" width="50px" height="50px"/>
+                <img id="userAvatar" :src="'https://petadoption.j.layershift.co.uk/user/avatar/' + userLogin.avatar" width="50px" height="50px"/>
             </button>
             <div class="dropdown-menu dropdown-menu-right">
                 <button class="dropdown-item" type="button"><i style="font-size: 1.2rem; color:#7158e2" class="fas fa-user-circle"></i>  {{userLogin.userName}}</button>

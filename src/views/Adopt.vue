@@ -144,9 +144,9 @@ export default {
       },
       recordPet: 16,
       imgPet: {
-          item1 :'https://comic.j.layershift.co.uk/pet/image/',
+          item1 :'https://petadoption.j.layershift.co.uk/pet/image/',
           item2 :'src/assets/uploads/News/Video1.jpg',
-          item3 :'https://comic.j.layershift.co.uk/news/avatar/',
+          item3 :'https://petadoption.j.layershift.co.uk/news/avatar/',
       },
     };
   },
